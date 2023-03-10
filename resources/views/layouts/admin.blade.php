@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-1">
                     <div class="w-100 d-flex justify-content-end">
-                        <a href="#" class="nav_icon"><i class="fa-solid fa-circle-user fa-lg fa-fw"></i></a>
+                        <a href="/profile" class="nav_icon"><i class="fa-solid fa-circle-user fa-lg fa-fw"></i></a>
                         <a href="#" class="nav_icon"><i class="fa-solid fa-bell fa-lg fa-fw"></i></a>
                     </div>
                 </div>
