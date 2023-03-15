@@ -65,6 +65,17 @@
                                         <i class="fa-solid fa-newspaper fa-lg fa-fw"></i> Projects
                                     </a>
                                 </li>
+                                </li>
+                                <li class="text-left mt-3 sidebar_link {{ Route::currentRouteName() == 'admin.types.index' ? 'sidebar_selected' : '' }}">
+                                    <a class="text-white text-decoration-none w-100" href="{{route('admin.types.index') }}">
+                                        <i class="fa-solid fa-tag fa-lg fa-fw"></i> Types
+                                    </a>
+                                </li>
+                                <li class="text-left mt-3 sidebar_link {{ Route::currentRouteName() == 'admin.technologies.index' ? 'sidebar_selected' : '' }}">
+                                    <a class="text-white text-decoration-none w-100" href="{{route('admin.technologies.index') }}">
+                                        <i class="fa-solid fa-microchip fa-lg fa-fw"></i> Technologies
+                                    </a>
+                                </li>
 
                             </ul>
                     </div>
