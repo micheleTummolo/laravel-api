@@ -39,6 +39,15 @@
                     <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image')is-invalid @enderror">
                 </div>
                 <div class="col-12">
+                    <label class="form-label text-white">Tecnologie</label>
+                    <div>
+                        @foreach($technologies as $technology)
+                        <input class="form-check-input" type="checkbox" value="{{ $technology->id }}" name="technologies[]">
+                        <label class="form-check-label text-white me-3">{{ $technology->name }}</label>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-12">
                     <label class="form-label text-white">Descrizione</label>
                     <textarea class="form-control" name="description" rows="8"></textarea>
                 </div>

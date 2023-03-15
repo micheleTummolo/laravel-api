@@ -42,6 +42,20 @@
                     <input type="file" name="cover_image" id="cover_image" class="form-control @error('cover_image')is-invalid @enderror">
                 </div>
                 <div class="col-12">
+                    <label class="form-label text-white">Tecnologie</label>
+                    <div>
+                        @foreach($technologies as $technology)
+                        @if($errors->any())
+                        <input class="form-check-input" type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ in_array($technology->id, old('technologies', []) ) ? 'checked' : '' }}>
+                        <label class="form-check-label text-white me-3">{{ $technology->name }}</label>
+                        @else
+                        <input class="form-check-input" type="checkbox" value="{{ $technology->id }}" name="technologies[]" {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
+                        <label class="form-check-label text-white me-3">{{ $technology->name }}</label>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-12">
                     <label class="form-label text-white">Descrizione</label>
                     <textarea class="form-control" name="description" rows="8">{{ old('description') ?? $project->description }}</textarea>
                 </div>
