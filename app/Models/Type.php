@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Type extends Model
 {
@@ -13,5 +14,9 @@ class Type extends Model
 
     public function projects(){
         return $this->hasMany(Projects::calss);
+    }
+
+    public static function generateSlug($type){
+        return Str::slug($type, '-');
     }
 }
