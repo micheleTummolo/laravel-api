@@ -6,6 +6,7 @@ use App\Models\Type;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TypeController extends Controller
 {
@@ -16,7 +17,9 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -26,7 +29,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -37,7 +40,18 @@ class TypeController extends Controller
      */
     public function store(StoreTypeRequest $request)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Type::generateSlug($request->type, '-');
+
+        $form_data['slug'] = $slug;
+
+        $newType = new Type();
+        $newType->fill($form_data);
+
+        $newType->save();
+
+        return redirect()->route('admin.types.index')->with('message', 'Tipo aggiunto correttamente');
     }
 
     /**
@@ -59,7 +73,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -71,7 +85,15 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Type::generateSlug($request->type, '-');
+
+        $form_data['slug'] = $slug;
+
+        $type->update($form_data);
+
+        return redirect()->route('admin.types.index')->with('message', $type->type.' è stato modificato correttamente');
     }
 
     /**
@@ -82,6 +104,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return redirect()->route('admin.types.index')->with('message', $type->type.' è stato cancellato correttamente');
     }
 }
