@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class UpdateTypeRequest extends FormRequest
+class StoreTechnologyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,7 @@ class UpdateTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            'type'        => ['required', Rule::unique('types')->ignore($this->type), 'max:50'],
+            'name' => ['required', Rule::unique('technologies')->ignore($this->technology), 'max:50'],
         ];
     }
 
@@ -36,9 +37,9 @@ class UpdateTypeRequest extends FormRequest
     public function messages()
     {
         return [
-            'type.required' => 'Il nome è richiesto',
-            'type.unique' => 'E\' già presente un tipo con questo nome',
-            'type.max' => 'Il nome non può essere lungo più di :max caratteri',
+            'name.required' => 'Il nome è richiesto',
+            'name.unique' => 'E\' già presente una tecnologia con questo nome',
+            'name.max' => 'Il nome non può essere lungo più di :max caratteri',
         ];
     }
 }
