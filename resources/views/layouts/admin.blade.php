@@ -46,7 +46,7 @@
         </header>
         <div class="container-fluid">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-flex collapse p-0 pt-3 flex-column justify-content-between background_dark border_right main_container">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-3 col-xxl-3 d-md-flex collapse p-0 pt-3 flex-column justify-content-between background_dark border_right main_container overflow-auto">
                     <!-- Sidebar top -->    
                     <div class="position-sticky">
                             <div class="logo_container border_bottom d-flex justify-content-center">
@@ -100,7 +100,7 @@
                     </div>
                 </nav>
 
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 background_dark">
+                <main class="col-md-9 ms-sm-auto col-lg-9 col-xxl-9 px-md-4 background_dark">
                     @yield('content')
                 </main>
             </div>
